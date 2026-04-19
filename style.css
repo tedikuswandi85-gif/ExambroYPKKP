@@ -1,15 +1,13 @@
-body { font-family: 'Segoe UI', sans-serif; background: #eef2f3; margin: 0; user-select: none; }
-.login-box { background: white; max-width: 400px; margin: 30px auto; padding: 25px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; }
-.logo-sekolah { width: 110px; margin-bottom: 10px; }
-.header-exam h2 { margin: 0; color: #1a73e8; font-size: 1.4em; }
-.date-info { font-weight: bold; font-size: 0.9em; background: #d1e7ff; color: #0056b3; padding: 5px; border-radius: 5px; margin: 10px 0; display: inline-block; }
-.tab-menu { display: flex; margin: 15px 0; border-bottom: 1px solid #ddd; }
-.tab-menu button { flex: 1; padding: 10px; border: none; background: none; cursor: pointer; color: #888; }
+body { font-family: sans-serif; background: #f4f7f6; margin: 0; user-select: none; }
+.login-box { background: white; max-width: 400px; margin: 40px auto; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; }
+.logo-sekolah { width: 100px; margin-bottom: 10px; }
+.date-info { font-weight: bold; background: #e3f2fd; padding: 5px; border-radius: 4px; color: #1a73e8; }
+.tab-menu { display: flex; margin: 20px 0; border-bottom: 1px solid #ddd; }
+.tab-menu button { flex: 1; padding: 10px; border: none; background: none; cursor: pointer; }
 .tab-menu button.active { border-bottom: 3px solid #1a73e8; font-weight: bold; color: #1a73e8; }
-select, input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
-.btn-start { width: 100%; padding: 15px; background: #1a73e8; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
-.status-bar { background: #222; color: white; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; }
-.exit-btn { background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
-iframe { width: 100%; height: calc(100vh - 50px); border: none; }
-.footer-copyright { margin-top: 20px; font-size: 0.75em; color: #aaa; border-top: 1px solid #eee; padding-top: 10px; }
-@media print { body { display: none; } }
+select, input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
+.btn-start { width: 100%; padding: 15px; background: #1a73e8; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+.status-bar { background: #222; color: white; padding: 10px; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; width: 100%; box-sizing: border-box; }
+.exit-btn { background: #dc3545; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; }
+iframe { width: 100%; height: calc(100vh - 50px); border: none; margin-top: 50px; }
+.footer-copyright { margin-top: 20px; font-size: 12px; color: #999; }

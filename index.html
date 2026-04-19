@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Exambro SMP YPKKP 2026</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+
+    <div id="auth-screen">
+        <div class="login-box">
+            <div class="header-exam">
+                <img src="https://lh3.googleusercontent.com/d/1KJFzeWi7B2DkkWpe4D090cQfeK5dO0bT" alt="Logo SMP YPKKP" class="logo-sekolah">
+                <h2>Portal Ujian Resmi</h2>
+                <h3>SMP YPKKP</h3>
+                <hr>
+            </div>
+
+            <p id="date-display" class="date-info"></p>
+
+            <div class="tab-menu">
+                <button onclick="showTab('jadwal')" id="btn-tab-jadwal" class="active">Jadwal PSAJ</button>
+                <button onclick="showTab('manual')" id="btn-tab-manual">Ulangan Harian</button>
+            </div>
+
+            <div id="tab-jadwal" class="tab-content">
+                <select id="select-tingkat" onchange="updateRombel()">
+                    <option value="">-- Pilih Tingkatan --</option>
+                    <option value="7">Kelas 7</option>
+                    <option value="8">Kelas 8</option>
+                    <option value="9">Kelas 9</option>
+                </select>
+
+                <select id="select-rombel" onchange="filterMapel()">
+                    <option value="">-- Pilih Rombel --</option>
+                </select>
+
+                <select id="select-mapel">
+                    <option value="">-- Pilih Mata Pelajaran --</option>
+                </select>
+                
+                <input type="password" id="token-ujian" placeholder="SMPYPKKPBISA">
+                <button onclick="startExam('jadwal')" class="btn-start">Mulai Ujian</button>
+            </div>
+
+            <div id="tab-manual" class="tab-content" style="display:none;">
+                <input type="text" id="manual-url" placeholder="Link Soal (Guru)">
+                <input type="number" id="manual-timer" placeholder="Durasi (Menit)">
+                <input type="text" id="manual-token" placeholder="Token Masuk">
+                <button onclick="startExam('manual')" class="btn-start">Mulai Ulangan</button>
+            </div>
+
+            <div class="footer-copyright">
+                © SMP YPKKP 2026 | All Rights Reserved
+            </div>
+        </div>
+    </div>
+
+    <div id="exam-header" style="display: none;">
+        <div class="status-bar">
+            <span><img src="https://lh3.googleusercontent.com/d/1KJFzeWi7B2DkkWpe4D090cQfeK5dO0bT" height="20"> SMP YPKKP</span>
+            <span class="timer-box">Sisa Waktu: <b id="timer-display">00:00</b></span>
+            <span id="violation">Pelanggaran: <b id="cheat-count">0</b></span>
+            <button onclick="exitExam()" class="exit-btn">Keluar</button>
+        </div>
+    </div>
+    <iframe id="exam-frame" style="display:none;" allow="camera; microphone"></iframe>
+
+    <script src="script.js"></script>
+</body>
+</html>

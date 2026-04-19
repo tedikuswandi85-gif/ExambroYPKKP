@@ -11,7 +11,7 @@
     <div id="auth-screen">
         <div class="login-box">
             <div class="header-exam">
-                <img src="https://lh3.googleusercontent.com/d/1KJFzeWi7B2DkkWpe4D090cQfeK5dO0bT" alt="Logo SMP YPKKP" class="logo-sekolah">
+                <img src="https://drive.google.com/thumbnail?id=1KJFzeWi7B2DkkWpe4D090cQfeK5dO0bT" alt="Logo SMP YPKKP" class="logo-sekolah">
                 <h2>Portal Ujian Resmi</h2>
                 <h3>SMP YPKKP</h3>
                 <hr>
@@ -40,32 +40,31 @@
                     <option value="">-- Pilih Mata Pelajaran --</option>
                 </select>
                 
-                <input type="password" id="token-ujian" placeholder="SMPYPKKPBISA">
+                <input type="password" id="token-ujian" placeholder="Masukkan Token Soal">
                 <button onclick="startExam('jadwal')" class="btn-start">Mulai Ujian</button>
             </div>
 
             <div id="tab-manual" class="tab-content" style="display:none;">
-                <input type="text" id="manual-url" placeholder="Link Soal (Guru)">
-                <input type="number" id="manual-timer" placeholder="Durasi (Menit)">
-                <input type="text" id="manual-token" placeholder="Token Masuk">
-                <button onclick="startExam('manual')" class="btn-start">Mulai Ulangan</button>
+                <input type="text" id="manual-url" placeholder="Paste Link Soal dari Guru">
+                <p style="font-size: 11px; color: red; margin: 5px 0;">*Tanpa token & timer otomatis</p>
+                <button onclick="startExam('manual')" class="btn-start" style="background: #28a745;">Mulai Ulangan</button>
             </div>
 
             <div class="footer-copyright">
-                © SMP YPKKP 2026 | All Rights Reserved
+                &copy; SMP YPKKP 2026 | All Rights Reserved
             </div>
         </div>
     </div>
 
     <div id="exam-header" style="display: none;">
         <div class="status-bar">
-            <span><img src="https://lh3.googleusercontent.com/d/1KJFzeWi7B2DkkWpe4D090cQfeK5dO0bT" height="20"> SMP YPKKP</span>
-            <span class="timer-box">Sisa Waktu: <b id="timer-display">00:00</b></span>
-            <span id="violation">Pelanggaran: <b id="cheat-count">0</b></span>
-            <button onclick="exitExam()" class="exit-btn">Keluar</button>
+            <span>SMP YPKKP 2026</span>
+            <span id="timer-container">Sisa: <b id="timer-display">00:00</b></span>
+            <span id="violation-box">Pelanggaran: <b id="cheat-count">0</b></span>
+            <button id="btn-exit" class="exit-btn">Selesai & Submit</button>
         </div>
     </div>
-    <iframe id="exam-frame" style="display:none;" allow="camera; microphone"></iframe>
+    <iframe id="exam-frame" style="display:none;"></iframe>
 
     <script src="script.js"></script>
 </body>

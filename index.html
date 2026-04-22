@@ -6,65 +6,78 @@
     <title>Exambro SMP YPKKP 2026</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+<body>
+
+    <audio id="alert-sound" src="https://www.soundjay.com/buttons/beep-01a.mp3" preload="auto"></audio>
+
+    <div id="camera-feed" style="display: none;">
+        <video id="video" autoplay playsinline></video>
+        <canvas id="canvas" style="display:none;"></canvas>
+    </div>
 
     <div id="auth-screen">
         <div class="login-box">
             <div class="header-exam">
-                <img src="https://drive.google.com/thumbnail?id=1KJFzeWi7B2DkkWpe4D090cQfeK5dO0bT" alt="Logo SMP YPKKP" class="logo-sekolah">
+                <img src="https://i.ibb.co.com/GfLt51Nk/logo.png" alt="Logo SMP YPKKP" class="logo-sekolah">
                 <h2>Portal Ujian Resmi</h2>
-                <h3>SMP YPKKP</h3>
+                <h3>SMP YPKKP 2026</h3>
                 <hr>
             </div>
-
-            <p id="date-display" class="date-info"></p>
 
             <div class="tab-menu">
                 <button onclick="showTab('jadwal')" id="btn-tab-jadwal" class="active">Jadwal PSAJ</button>
                 <button onclick="showTab('manual')" id="btn-tab-manual">Ulangan Harian</button>
             </div>
 
+            <input type="text" id="siswa-nama" placeholder="Nama Lengkap Siswa">
+            
             <div id="tab-jadwal" class="tab-content">
-                <select id="select-tingkat" onchange="updateRombel()">
-                    <option value="">-- Pilih Tingkatan --</option>
+                <select id="select-tingkat" onchange="filterMapel()">
+                    <option value="">-- Pilih Tingkat Kelas --</option>
                     <option value="7">Kelas 7</option>
                     <option value="8">Kelas 8</option>
                     <option value="9">Kelas 9</option>
                 </select>
 
-                <select id="select-rombel" onchange="filterMapel()">
-                    <option value="">-- Pilih Rombel --</option>
-                </select>
-
                 <select id="select-mapel">
                     <option value="">-- Pilih Mata Pelajaran --</option>
                 </select>
-                
-                <input type="password" id="token-ujian" placeholder="Masukkan Token Soal">
-                <button onclick="startExam('jadwal')" class="btn-start">Mulai Ujian</button>
+                <p id="jadwal-info" style="font-size: 11px; color: #666;"></p>
+                <button onclick="startExam('jadwal')" class="btn-start">MULAI UJIAN PSAJ</button>
             </div>
 
             <div id="tab-manual" class="tab-content" style="display:none;">
-                <input type="text" id="manual-url" placeholder="Paste Link Soal dari Guru">
-                <p style="font-size: 11px; color: red; margin: 5px 0;">*Tanpa token & timer otomatis</p>
-                <button onclick="startExam('manual')" class="btn-start" style="background: #28a745;">Mulai Ulangan</button>
+                <input type="text" id="manual-url" placeholder="Tempel (Paste) Link Soal Di Sini">
+                <input type="number" id="manual-timer" placeholder="Set Timer (Menit). Kosongkan jika tak terbatas">
+                <button onclick="startExam('manual')" class="btn-start" style="background: #28a745;">MULAI ULANGAN</button>
             </div>
 
             <div class="footer-copyright">
-                &copy; SMP YPKKP 2026 | All Rights Reserved
+                &copy; SMP YPKKP 2026 | Anti-Cheat System
             </div>
         </div>
     </div>
 
     <div id="exam-header" style="display: none;">
         <div class="status-bar">
-            <span>SMP YPKKP 2026</span>
-            <span id="timer-container">Sisa: <b id="timer-display">00:00</b></span>
-            <span id="violation-box">Pelanggaran: <b id="cheat-count">0</b></span>
-            <button id="btn-exit" class="exit-btn">Selesai & Submit</button>
+            <div class="user-info">
+                <b id="display-nama">Siswa</b><br>
+                <small id="display-mapel">Mapel</small>
+            </div>
+            <div id="timer-container">Sisa Waktu: <b id="timer-display">00:00:00</b></div>
+            <button onclick="exitApp()" class="btn-exit">SELESAI</button>
+        </div>
+        <iframe id="exam-frame" src=""></iframe>
+    </div>
+
+    <div id="warning-overlay">
+        <div class="warning-box">
+            <h1 style="color:red;">PELANGGARAN!</h1>
+            <p id="violation-msg">Terdeteksi keluar dari aplikasi!</p>
+            <p style="font-size: 12px; color: #555;">Wajah Anda telah difoto sebagai bukti.</p>
+            <button onclick="returnToFullscreen()" class="btn-start">KEMBALI KE UJIAN</button>
         </div>
     </div>
-    <iframe id="exam-frame" style="display:none;"></iframe>
 
     <script src="script.js"></script>
 </body>

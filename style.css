@@ -1,54 +1,33 @@
-body { font-family: 'Poppins', sans-serif; background: #f0f2f5; margin: 0; user-select: none; }
+body { font-family: sans-serif; background: #f4f7f6; margin: 0; user-select: none; overflow: hidden; }
 
-.login-box { 
-    background: white; max-width: 400px; margin: 20px auto; 
-    padding: 30px; border-radius: 20px; text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
-}
+.login-box { background: white; max-width: 420px; margin: 40px auto; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
 
-.logo-sekolah { width: 80px; }
-h2 { font-size: 18px; margin: 10px 0 0; color: #333; }
-h3 { font-size: 14px; color: #666; margin-bottom: 20px; }
+.logo-sekolah { width: 90px; margin-bottom: 10px; }
 
 .tab-menu { display: flex; gap: 10px; margin-bottom: 20px; }
-.tab-menu button { 
-    flex: 1; padding: 10px; border: none; background: #eee; 
-    border-radius: 10px; cursor: pointer; font-weight: bold; 
-}
-.tab-menu button.active { background: #3b82f6; color: white; }
+.tab-menu button { flex: 1; padding: 12px; border: none; background: #e4e6eb; border-radius: 12px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+.tab-menu button.active { background: #007bff; color: white; }
 
-input, select { 
-    width: 100%; padding: 12px; margin: 10px 0; 
-    border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box;
-}
+input, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; font-size: 14px; }
 
-.btn-start { 
-    width: 100%; padding: 15px; background: #3b82f6; color: white; 
-    border: none; border-radius: 10px; font-weight: bold; cursor: pointer;
-}
+.btn-start { width: 100%; padding: 15px; background: #007bff; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 10px; }
 
-/* Header Ujian */
-.status-bar { 
-    background: white; padding: 10px 15px; display: flex; 
-    justify-content: space-between; align-items: center;
-    border-bottom: 2px solid #ddd; height: 50px;
-}
-.timer-badge { color: red; font-weight: bold; }
-.btn-exit { background: #10b981; color: white; border: none; padding: 8px 15px; border-radius: 8px; font-weight: bold; }
+/* Status Bar Ujian */
+.status-bar { background: white; padding: 5px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ddd; height: 60px; }
 
-/* Camera Overlay */
-#camera-feed { 
-    position: fixed; bottom: 15px; right: 15px; 
-    width: 80px; height: 110px; border: 3px solid white;
-    border-radius: 12px; z-index: 2000; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
+#timer-box { font-weight: bold; padding: 8px 15px; border-radius: 8px; background: #f8f9fa; }
 
-iframe { width: 100%; height: calc(100vh - 70px); border: none; }
-
-/* Warning */
-#warning-overlay { 
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-    background: rgba(0,0,0,0.9); z-index: 9999; display: none;
-    justify-content: center; align-items: center; color: white;
+/* Animasi Waktu Kritis */
+@keyframes blink-red {
+    0% { background: #fff; } 50% { background: #ffcccc; } 100% { background: #fff; }
 }
-.warning-box { background: white; color: black; padding: 30px; border-radius: 20px; width: 80%; text-align: center; }
+.timer-critical { animation: blink-red 0.8s infinite; color: red !important; border: 2px solid red !important; }
+
+#exam-frame { width: 100%; height: calc(100vh - 72px); border: none; }
+
+.btn-exit { background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+
+/* Overlays */
+#warning-overlay, #times-up-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 9999; display: none; justify-content: center; align-items: center; }
+
+.warning-box { background: white; color: black; padding: 40px; border-radius: 25px; text-align: center; width: 85%; max-width: 400px; box-shadow: 0 0 50px rgba(255,0,0,0.3); }

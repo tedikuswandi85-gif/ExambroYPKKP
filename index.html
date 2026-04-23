@@ -6,9 +6,17 @@
     <title>Exambro SMP YPKKP 2026</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false">
 
     <audio id="alert-sound" src="https://www.soundjay.com/buttons/beep-01a.mp3" preload="auto"></audio>
+
+    <div id="times-up-overlay">
+        <div class="warning-box">
+            <h1 style="color:red; font-size: 30px;">WAKTU HABIS!</h1>
+            <p>Akses soal telah ditutup otomatis oleh sistem.</p>
+            <button onclick="location.reload()" class="btn-start">Kembali ke Menu</button>
+        </div>
+    </div>
 
     <div id="camera-feed" style="display: none;">
         <video id="video" autoplay playsinline></video>
@@ -31,7 +39,7 @@
 
             <input type="text" id="siswa-nama" placeholder="Nama Lengkap Siswa">
             
-            <div id="tab-jadwal" class="tab-content">
+            <div id="tab-jadwal">
                 <select id="select-tingkat" onchange="filterMapel()">
                     <option value="">-- Pilih Tingkat Kelas --</option>
                     <option value="7">Kelas 7</option>
@@ -42,29 +50,26 @@
                 <select id="select-mapel">
                     <option value="">-- Pilih Mata Pelajaran --</option>
                 </select>
-                <p id="jadwal-info" style="font-size: 11px; color: #666;"></p>
+
+                <input type="text" id="psaj-token" placeholder="Masukkan Token (Dari Pengawas)" style="text-transform: uppercase;">
                 <button onclick="startExam('jadwal')" class="btn-start">MULAI UJIAN PSAJ</button>
             </div>
 
-            <div id="tab-manual" class="tab-content" style="display:none;">
-                <input type="text" id="manual-url" placeholder="Tempel (Paste) Link Soal Di Sini">
-                <input type="number" id="manual-timer" placeholder="Set Timer (Menit). Kosongkan jika tak terbatas">
+            <div id="tab-manual" style="display:none;">
+                <input type="text" id="manual-url" placeholder="Tempel Link Soal Di Sini">
+                <input type="number" id="manual-timer" placeholder="Durasi (Menit)">
                 <button onclick="startExam('manual')" class="btn-start" style="background: #28a745;">MULAI ULANGAN</button>
-            </div>
-
-            <div class="footer-copyright">
-                &copy; SMP YPKKP 2026 | Anti-Cheat System
             </div>
         </div>
     </div>
 
     <div id="exam-header" style="display: none;">
         <div class="status-bar">
-            <div class="user-info">
+            <div>
                 <b id="display-nama">Siswa</b><br>
                 <small id="display-mapel">Mapel</small>
             </div>
-            <div id="timer-container">Sisa Waktu: <b id="timer-display">00:00:00</b></div>
+            <div id="timer-box">Sisa: <b id="timer-display">00:00</b></div>
             <button onclick="exitApp()" class="btn-exit">SELESAI</button>
         </div>
         <iframe id="exam-frame" src=""></iframe>
@@ -72,9 +77,8 @@
 
     <div id="warning-overlay">
         <div class="warning-box">
-            <h1 style="color:red;">PELANGGARAN!</h1>
-            <p id="violation-msg">Terdeteksi keluar dari aplikasi!</p>
-            <p style="font-size: 12px; color: #555;">Wajah Anda telah difoto sebagai bukti.</p>
+            <h2 style="color:red;">PELANGGARAN!</h2>
+            <p id="violation-msg">Dilarang keluar dari aplikasi!</p>
             <button onclick="returnToFullscreen()" class="btn-start">KEMBALI KE UJIAN</button>
         </div>
     </div>

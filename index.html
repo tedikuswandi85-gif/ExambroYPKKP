@@ -8,19 +8,15 @@
 </head>
 <body oncontextmenu="return false" onselectstart="return false">
 
+    <audio id="warning-sound" src="https://www.soundjay.com/buttons/beep-07a.mp3" preload="auto"></audio>
     <audio id="alert-sound" src="https://www.soundjay.com/buttons/beep-01a.mp3" preload="auto"></audio>
 
     <div id="times-up-overlay">
         <div class="warning-box">
             <h1 style="color:red; font-size: 30px;">WAKTU HABIS!</h1>
-            <p>Akses soal telah ditutup otomatis oleh sistem.</p>
-            <button onclick="location.reload()" class="btn-start">Kembali ke Menu</button>
+            <p>Sistem telah menutup akses soal secara otomatis.</p>
+            <button onclick="location.reload()" class="btn-start">Kembali ke Menu Utama</button>
         </div>
-    </div>
-
-    <div id="camera-feed" style="display: none;">
-        <video id="video" autoplay playsinline></video>
-        <canvas id="canvas" style="display:none;"></canvas>
     </div>
 
     <div id="auth-screen">
@@ -51,13 +47,13 @@
                     <option value="">-- Pilih Mata Pelajaran --</option>
                 </select>
 
-                <input type="text" id="psaj-token" placeholder="Masukkan Token (Dari Pengawas)" style="text-transform: uppercase;">
+                <input type="text" id="psaj-token" placeholder="Masukkan Token PSAJ" style="text-transform: uppercase;">
                 <button onclick="startExam('jadwal')" class="btn-start">MULAI UJIAN PSAJ</button>
             </div>
 
             <div id="tab-manual" style="display:none;">
-                <input type="text" id="manual-url" placeholder="Tempel Link Soal Di Sini">
-                <input type="number" id="manual-timer" placeholder="Durasi (Menit)">
+                <input type="text" id="manual-url" placeholder="Tempel Link Soal (Google Form/Lainnya)">
+                <input type="number" id="manual-timer" placeholder="Set Timer (Menit)">
                 <button onclick="startExam('manual')" class="btn-start" style="background: #28a745;">MULAI ULANGAN</button>
             </div>
         </div>
@@ -65,11 +61,11 @@
 
     <div id="exam-header" style="display: none;">
         <div class="status-bar">
-            <div>
+            <div class="user-info">
                 <b id="display-nama">Siswa</b><br>
                 <small id="display-mapel">Mapel</small>
             </div>
-            <div id="timer-box">Sisa: <b id="timer-display">00:00</b></div>
+            <div id="timer-box">Sisa Waktu: <b id="timer-display">00:00:00</b></div>
             <button onclick="exitApp()" class="btn-exit">SELESAI</button>
         </div>
         <iframe id="exam-frame" src=""></iframe>
@@ -77,9 +73,9 @@
 
     <div id="warning-overlay">
         <div class="warning-box">
-            <h2 style="color:red;">PELANGGARAN!</h2>
-            <p id="violation-msg">Dilarang keluar dari aplikasi!</p>
-            <button onclick="returnToFullscreen()" class="btn-start">KEMBALI KE UJIAN</button>
+            <h2 style="color:red;">DETEKSI PELANGGARAN!</h2>
+            <p id="violation-msg">Dilarang keluar dari aplikasi atau pindah tab!</p>
+            <button onclick="returnToFullscreen()" class="btn-start">KEMBALI KE SOAL</button>
         </div>
     </div>
 

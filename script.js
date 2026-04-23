@@ -43,22 +43,21 @@ const databaseUjian = [
 let isExamActive = false;
 let timerInterval;
 
-function showTab(tab) {
-    document.getElementById('tab-jadwal').style.display = tab === 'jadwal' ? 'block' : 'none';
-    document.getElementById('tab-manual').style.display = tab === 'manual' ? 'block' : 'none';
-    document.getElementById('btn-tab-jadwal').className = tab === 'jadwal' ? 'active' : '';
-    document.getElementById('btn-tab-manual').className = tab === 'manual' ? 'active' : '';
+function showTab(t) {
+    document.getElementById('tab-jadwal').style.display = t === 'jadwal' ? 'block' : 'none';
+    document.getElementById('tab-manual').style.display = t === 'manual' ? 'block' : 'none';
+    document.getElementById('btn-tab-jadwal').className = t === 'jadwal' ? 'active' : '';
+    document.getElementById('btn-tab-manual').className = t === 'manual' ? 'active' : '';
 }
 
 function filterMapel() {
-    const tingkat = document.getElementById('select-tingkat').value;
-    const selectMapel = document.getElementById('select-mapel');
-    selectMapel.innerHTML = '<option value="">-- Pilih Mata Pelajaran --</option>';
-    const filtered = databaseUjian.filter(m => m.tingkat === tingkat);
-    filtered.forEach((m, index) => {
+    const tkt = document.getElementById('select-tingkat').value;
+    const sel = document.getElementById('select-mapel');
+    sel.innerHTML = '<option value="">-- Pilih Mata Pelajaran --</option>';
+    databaseUjian.filter(m => m.tingkat === tkt).forEach((m, i) => {
         let opt = document.createElement('option');
-        opt.value = index; opt.innerHTML = `${m.mapel} (${m.tgl})`;
-        selectMapel.appendChild(opt);
+        opt.value = i; opt.innerHTML = `${m.mapel} (${m.tgl})`;
+        sel.appendChild(opt);
     });
 }
 
@@ -76,11 +75,11 @@ async function startExam(type) {
         if (!tkt || idx === "") return alert("Pilih Mapel!");
         const data = databaseUjian.filter(m => m.tingkat === tkt)[idx];
 
-        // CEK TANGGAL (Hanya buka di hari H)
+        // Kunci Tanggal
         const today = new Date().toISOString().split('T')[0];
-        if (today !== data.tgl) return alert(`HANYA BISA DIBUKA TANGGAL: ${data.tgl}\nHari ini: ${today}`);
+        if (today !== data.tgl) return alert(`Hanya bisa dibuka tanggal: ${data.tgl}`);
 
-        // CEK TOKEN
+        // Kunci Token
         if (tokenIn !== data.token) return alert("TOKEN SALAH!");
 
         link = data.link; durasi = data.durasi; mapel = data.mapel;
@@ -91,29 +90,41 @@ async function startExam(type) {
         if (!link.startsWith('http')) return alert("Link tidak valid!");
     }
 
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        document.getElementById('video').srcObject = stream;
-        document.getElementById('camera-feed').style.display = 'block';
-        await document.documentElement.requestFullscreen();
+    isExamActive = true;
+    document.getElementById('auth-screen').style.display = 'none';
+    document.getElementById('exam-header').style.display = 'block';
+    document.getElementById('display-nama').innerText = nama;
+    document.getElementById('display-mapel').innerText = mapel;
+    document.getElementById('exam-frame').src = link;
+    document.documentElement.requestFullscreen().catch(() => {});
 
-        isExamActive = true;
-        document.getElementById('auth-screen').style.display = 'none';
-        document.getElementById('exam-header').style.display = 'block';
-        document.getElementById('display-nama').innerText = nama;
-        document.getElementById('display-mapel').innerText = mapel;
-        document.getElementById('exam-frame').src = link;
-
-        if (durasi > 0) startTimer(durasi);
-        else document.getElementById('timer-display').innerText = "Unlimited";
-    } catch (e) { alert("IZINKAN KAMERA UNTUK MULAI!"); }
+    if (durasi > 0) startTimer(durasi);
+    else document.getElementById('timer-display').innerText = "Unlimited";
 }
 
 function startTimer(min) {
     let t = min * 60;
+    const display = document.getElementById('timer-display');
+    const warningSound = document.getElementById('warning-sound');
+
     timerInterval = setInterval(() => {
-        let m = Math.floor(t / 60); let s = t % 60;
-        document.getElementById('timer-display').innerText = `${m}:${s < 10 ? '0'+s : s}`;
+        let h = Math.floor(t / 3600);
+        let m = Math.floor((t % 3600) / 60);
+        let s = t % 60;
+        display.innerText = `${h}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+
+        // Peringatan 5 Menit
+        if (t === 300) {
+            warningSound.play();
+            alert("Waktu sisa 5 menit! Segera selesaikan.");
+        }
+
+        // Peringatan 1 Menit (Visual Kedip)
+        if (t <= 60 && t > 0) {
+            display.parentElement.classList.add('timer-critical');
+            if (t === 60) warningSound.play();
+        }
+
         if (--t < 0) {
             clearInterval(timerInterval);
             autoSubmitAction();
@@ -142,8 +153,8 @@ function returnToFullscreen() {
 }
 
 function exitApp() {
-    if (confirm("Sudah Submit di soal?")) location.reload();
+    if (confirm("Sudah kirim jawaban di Google Form?")) location.reload();
 }
 
-document.addEventListener("visibilitychange", () => { if (document.hidden) triggerViolation("Dilarang Keluar Tab!"); });
+document.addEventListener("visibilitychange", () => { if (document.hidden) triggerViolation("Pindah Tab Terdeteksi!"); });
 document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement && isExamActive) triggerViolation("Wajib Fullscreen!"); });

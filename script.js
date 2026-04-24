@@ -1,7 +1,7 @@
 // DATABASE LENGKAP PSAJ 2026
 const databaseUjian = [
     // KELAS 7
-    { tingkat: "7", mapel: "PABP", link: "https://bit.ly/ASASPAI7abc2526", tgl: "2026-04-17", durasi: 90, token: "PAI7" },
+    { tingkat: "7", mapel: "PABP", link: "https://bit.ly/ASASPAI7abc2526", tgl: "2026-04-24", durasi: 90, token: "PAI7" },
     { tingkat: "7", mapel: "Pend. Pancasila", link: "https://bit.ly/SAS1PP7", tgl: "2026-04-17", durasi: 90, token: "PP7" },
     { tingkat: "7", mapel: "Bahasa Indonesia", link: "https://bit.ly/ASAS1-BI7ABC2526", tgl: "2026-04-18", durasi: 90, token: "BI7" },
     { tingkat: "7", mapel: "Bahasa Inggris", link: "https://bit.ly/ASAS_ENGLISH7_2526", tgl: "2026-04-18", durasi: 120, token: "ENG7" },

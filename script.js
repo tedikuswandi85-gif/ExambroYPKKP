@@ -1,31 +1,6 @@
 // DATABASE LENGKAP PSAJ 2026
 const databaseUjian = [
-    // KELAS 7
-    { tingkat: "7", mapel: "PABP", link: "https://bit.ly/ASASPAI7abc2526", tgl: "2026-04-24", durasi: 90, token: "PAI7" },
-    { tingkat: "7", mapel: "Pend. Pancasila", link: "https://bit.ly/SAS1PP7", tgl: "2026-04-17", durasi: 90, token: "PP7" },
-    { tingkat: "7", mapel: "Bahasa Indonesia", link: "https://bit.ly/ASAS1-BI7ABC2526", tgl: "2026-04-18", durasi: 90, token: "BI7" },
-    { tingkat: "7", mapel: "Bahasa Inggris", link: "https://bit.ly/ASAS_ENGLISH7_2526", tgl: "2026-04-18", durasi: 120, token: "ENG7" },
-    { tingkat: "7", mapel: "IPA", link: "https://bit.ly/ASASIPA_72526", tgl: "2026-04-20", durasi: 90, token: "IPA7" },
-    { tingkat: "7", mapel: "IPS", link: "https://bit.ly/ASAS_IPS7Ganjil", tgl: "2026-04-20", durasi: 90, token: "IPS7" },
-    { tingkat: "7", mapel: "Matematika", link: "https://bit.ly/ASASMTK7", tgl: "2026-04-21", durasi: 90, token: "MTK7" },
-    { tingkat: "7", mapel: "PJOK", link: "https://forms.gle/wG9Rgi5rk5NqHffu9", tgl: "2026-04-21", durasi: 60, token: "PJOK7" },
-    { tingkat: "7", mapel: "SBDP", link: "https://bit.ly/AsasSenbud7_Agung25", tgl: "2026-04-22", durasi: 60, token: "SBD7" },
-    { tingkat: "7", mapel: "Informatika", link: "https://bit.ly/ASASInformatika7251", tgl: "2026-04-22", durasi: 60, token: "TIK7" },
-    { tingkat: "7", mapel: "Bahasa Sunda", link: "https://bit.ly/ASAS_BasaSunda_72526", tgl: "2026-04-22", durasi: 60, token: "SUN7" },
-
-    // KELAS 8
-    { tingkat: "8", mapel: "PABP", link: "https://bit.ly/ASASPAIBP-82526", tgl: "2026-04-17", durasi: 90, token: "PAI8" },
-    { tingkat: "8", mapel: "Pend. Pancasila", link: "https://bit.ly/SAS1PP8", tgl: "2026-04-17", durasi: 90, token: "PP8" },
-    { tingkat: "8", mapel: "Bahasa Indonesia", link: "https://bit.ly/ASAS1-BI8AB2526", tgl: "2026-04-18", durasi: 90, token: "BI8" },
-    { tingkat: "8", mapel: "Bahasa Inggris", link: "https://bit.ly/SASenglish8", tgl: "2026-04-18", durasi: 120, token: "ENG8" },
-    { tingkat: "8", mapel: "IPA", link: "https://bit.ly/ASASIPA_82526", tgl: "2026-04-20", durasi: 90, token: "IPA8" },
-    { tingkat: "8", mapel: "IPS", link: "https://bit.ly/ASAS_IPS8Ganjil", tgl: "2026-04-20", durasi: 90, token: "IPS8" },
-    { tingkat: "8", mapel: "Matematika", link: "https://bit.ly/ASASMTK8", tgl: "2026-04-21", durasi: 90, token: "MTK8" },
-    { tingkat: "8", mapel: "PJOK", link: "https://forms.gle/9B8A3v4uN6yE7rT8", tgl: "2026-04-21", durasi: 60, token: "PJOK8" },
-    { tingkat: "8", mapel: "SBDP", link: "https://bit.ly/AsasSenbud8_Agung25", tgl: "2026-04-22", durasi: 60, token: "SBD8" },
-    { tingkat: "8", mapel: "Informatika", link: "https://bit.ly/ASASInformatika825", tgl: "2026-04-22", durasi: 60, token: "TIK8" },
-    { tingkat: "8", mapel: "Bahasa Sunda", link: "https://bit.ly/ASAS_BasaSunda_82526", tgl: "2026-04-22", durasi: 60, token: "SUN8" },
-
+   
     // KELAS 9
     { tingkat: "9", mapel: "PABP", link: "https://bit.ly/PSAJPAIBP2526", tgl: "2026-05-07", durasi: 90, token: "ALLAHBANTUSAYALULUS" },
     { tingkat: "9", mapel: "Pend. Pancasila", link: "https://bit.ly/ASASPPKN9-2526", tgl: "2026-05-04", durasi: 90, token: "PP9" },

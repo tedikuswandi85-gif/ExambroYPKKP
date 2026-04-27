@@ -6,11 +6,11 @@ const databaseUjian = [
     { tingkat: "9", mapel: "Pend. Pancasila", link: "https://bit.ly/ASASPPKN9-2526", tgl: "2026-05-04", durasi: 90, token: "PP9" },
     { tingkat: "9", mapel: "Bahasa Indonesia", link: "https://bit.ly/ASAS1-BI92526", tgl: "2026-05-06", durasi: 90, token: "BI9" },
     { tingkat: "9", mapel: "Bahasa Inggris", link: "https://bit.ly/SAS9ENGLISH", tgl: "2026-05-05", durasi: 120, token: "ENG9" },
-    { tingkat: "9", mapel: "IPA", link: "https://bit.ly/ASASIPA_92526", tgl: "2026-0405-05", durasi: 90, token: "IPA9" },
+    { tingkat: "9", mapel: "IPA", link: "https://forms.gle/Fm26nSSpXEvFERaAA", tgl: "2026-0405-05", durasi: 90, token: "IPAUS26" },
     { tingkat: "9", mapel: "IPS", link: "https://bit.ly/PSAJ_IPS_9_2026", tgl: "2026-05-06", durasi: 90, token: "MinimalTauSejarah" },
     { tingkat: "9", mapel: "Matematika", link: "https://docs.google.com/forms/d/e/1FAIpQLScUL0P-yN3jQQHbhmmPfn-s9zJeywKM4d-jCbVi2d851IGYlg/viewform?usp=header", tgl: "2026-05-04", durasi: 90, token: "SMPYPKKP2026" },
     { tingkat: "9", mapel: "PJOK", link: "https://forms.gle/4G9Rgi5rk5NqHffu9", tgl: "2026-05-07", durasi: 60, token: "PJOK9" },
-    { tingkat: "9", mapel: "SBDP", link: "https://bit.ly/AsasSenbud9_Agung25", tgl: "2026-05-07", durasi: 60, token: "SBD9" },
+    { tingkat: "9", mapel: "SBDP", link: "https://bit.ly/ASAJSBDP2526", tgl: "2026-05-07", durasi: 60, token: "BACAYANGBENER!" },
     { tingkat: "9", mapel: "Informatika", link: "https://bit.ly/ASASInformatika925", tgl: "2026-05-08", durasi: 60, token: "TIK9" },
     { tingkat: "9", mapel: "Bahasa Sunda", link: "https://forms.gle/4NxzRsnbhrToniEq5", tgl: "2026-05-08", durasi: 60, token: "SundaTeuHese" }
 ];

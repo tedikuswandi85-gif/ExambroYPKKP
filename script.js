@@ -11,7 +11,7 @@ const databaseUjian = [
     { tingkat: "9", mapel: "Matematika", link: "https://docs.google.com/forms/d/e/1FAIpQLScUL0P-yN3jQQHbhmmPfn-s9zJeywKM4d-jCbVi2d851IGYlg/viewform?usp=header", tgl: "2026-05-04", durasi: 90, token: "SMPYPKKP2026" },
     { tingkat: "9", mapel: "PJOK", link: "https://forms.gle/rcrBqkYLEbKqrmgE9", tgl: "2026-05-07", durasi: 60, token: "passwordnyaapa?" },
     { tingkat: "9", mapel: "SBDP", link: "https://bit.ly/ASAJSBDP2526", tgl: "2026-05-07", durasi: 60, token: "BACAYANGBENER!" },
-    { tingkat: "9", mapel: "Informatika", link: "https://bit.ly/ASASInformatika925", tgl: "2026-05-08", durasi: 60, token: "TIK9" },
+    { tingkat: "9", mapel: "Informatika", link: "https://bit.ly/PSAJ_Informatika_Agung26", tgl: "2026-05-08", durasi: 60, token: "SayaPastiLulus" },
     { tingkat: "9", mapel: "Bahasa Sunda", link: "https://forms.gle/4NxzRsnbhrToniEq5", tgl: "2026-05-08", durasi: 60, token: "SundaTeuHese" }
 ];
 

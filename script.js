@@ -1,6 +1,5 @@
 // DATABASE LENGKAP PSAJ 2026
 const databaseUjian = [
-   
     // KELAS 9
     { tingkat: "9", mapel: "PABP", link: "https://bit.ly/PSAJPAIBP2526", tgl: "2026-05-07", durasi: 90, token: "ALLAHBANTUSAYALULUS" },
     { tingkat: "9", mapel: "Pend. Pancasila", link: "https://forms.gle/tJFuapRJCFbJGws17", tgl: "2026-05-04", durasi: 90, token: "PSAJ2526PP9" },
@@ -18,6 +17,7 @@ const databaseUjian = [
 let isExamActive = false;
 let timerInterval;
 
+// --- FUNGSI NAVIGASI TAB ---
 function showTab(t) {
     document.getElementById('tab-jadwal').style.display = t === 'jadwal' ? 'block' : 'none';
     document.getElementById('tab-manual').style.display = t === 'manual' ? 'block' : 'none';
@@ -36,6 +36,7 @@ function filterMapel() {
     });
 }
 
+// --- FUNGSI MULAI UJIAN ---
 async function startExam(type) {
     const nama = document.getElementById('siswa-nama').value;
     if (!nama) return alert("Masukkan Nama!");
@@ -50,11 +51,8 @@ async function startExam(type) {
         if (!tkt || idx === "") return alert("Pilih Mapel!");
         const data = databaseUjian.filter(m => m.tingkat === tkt)[idx];
 
-        // Kunci Tanggal
         const today = new Date().toISOString().split('T')[0];
         if (today !== data.tgl) return alert(`Hanya bisa dibuka tanggal: ${data.tgl}`);
-
-        // Kunci Token
         if (tokenIn !== data.token) return alert("TOKEN SALAH!");
 
         link = data.link; durasi = data.durasi; mapel = data.mapel;
@@ -71,12 +69,15 @@ async function startExam(type) {
     document.getElementById('display-nama').innerText = nama;
     document.getElementById('display-mapel').innerText = mapel;
     document.getElementById('exam-frame').src = link;
+    
+    // Paksa Fullscreen
     document.documentElement.requestFullscreen().catch(() => {});
 
     if (durasi > 0) startTimer(durasi);
     else document.getElementById('timer-display').innerText = "Unlimited";
 }
 
+// --- LOGIKA TIMER ---
 function startTimer(min) {
     let t = min * 60;
     const display = document.getElementById('timer-display');
@@ -88,13 +89,11 @@ function startTimer(min) {
         let s = t % 60;
         display.innerText = `${h}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
 
-        // Peringatan 5 Menit
         if (t === 300) {
             warningSound.play();
             alert("Waktu sisa 5 menit! Segera selesaikan.");
         }
 
-        // Peringatan 1 Menit (Visual Kedip)
         if (t <= 60 && t > 0) {
             display.parentElement.classList.add('timer-critical');
             if (t === 60) warningSound.play();
@@ -115,6 +114,9 @@ function autoSubmitAction() {
     if (document.fullscreenElement) document.exitFullscreen();
 }
 
+// --- PROTEKSI KEAMANAN (ANTI-CONTEK) ---
+
+// 1. Deteksi Keluar Fullscreen & Pindah Tab
 function triggerViolation(msg) {
     if (!isExamActive) return;
     document.getElementById('alert-sound').play();
@@ -127,9 +129,47 @@ function returnToFullscreen() {
     document.getElementById('warning-overlay').style.display = 'none';
 }
 
-function exitApp() {
-    if (confirm("Sudah kirim jawaban di Google Form?")) location.reload();
-}
+document.addEventListener("visibilitychange", () => { 
+    if (document.hidden && isExamActive) triggerViolation("Pindah Tab/Aplikasi Terdeteksi!"); 
+});
 
-document.addEventListener("visibilitychange", () => { if (document.hidden) triggerViolation("Pindah Tab Terdeteksi!"); });
-document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement && isExamActive) triggerViolation("Wajib Fullscreen!"); });
+document.addEventListener('fullscreenchange', () => { 
+    if (!document.fullscreenElement && isExamActive) triggerViolation("Wajib Fullscreen! Jangan mencoba keluar."); 
+});
+
+// 2. Blokir Klik Kanan
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// 3. Blokir Shortcut Keyboard (F12, Ctrl+C, Ctrl+V, PrtSc, dll)
+document.addEventListener('keydown', e => {
+    if (!isExamActive) return;
+
+    // F12 (DevTools)
+    if (e.key === "F12") {
+        e.preventDefault();
+        triggerViolation("Akses Inspeksi Elemen Dilarang!");
+    }
+    // Ctrl+C, Ctrl+V, Ctrl+U, Ctrl+S, Ctrl+P
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'u' || e.key === 's' || e.key === 'p' || e.key === 'a')) {
+        e.preventDefault();
+        alert("Fungsi ini dinonaktifkan demi keamanan ujian!");
+    }
+    // PrintScreen
+    if (e.key === "PrintScreen" || e.key === "Snapshot") {
+        alert("Screenshot terdeteksi!");
+        navigator.clipboard.writeText(""); // Hapus isi clipboard
+    }
+});
+
+// 4. Hapus Clipboard Secara Berkala
+setInterval(() => {
+    if (isExamActive) {
+        navigator.clipboard.writeText("").catch(() => {});
+    }
+}, 3000);
+
+function exitApp() {
+    if (confirm("Pastikan Anda sudah klik 'Kirim' di Google Form. Keluar sekarang?")) {
+        location.reload();
+    }
+}

@@ -6,12 +6,12 @@ const databaseUjian = [
     { tingkat: "9", mapel: "Bahasa Indonesia", link: "https://forms.gle/SVkAADCiiNjXqW3Q9", tgl: "2026-05-06", durasi: 90, token: "PSAJBI2026" },
     { tingkat: "9", mapel: "Bahasa Inggris", link: "https://bit.ly/PSAJ_English2526", tgl: "2026-05-05", durasi: 120, token: "ENG2526" },
     { tingkat: "9", mapel: "IPA", link: "https://forms.gle/Fm26nSSpXEvFERaAA", tgl: "2026-05-05", durasi: 90, token: "IPAUS26" },
-    { tingkat: "9", mapel: "IPS", link: "https://bit.ly/PSAJ_IPS_9_2026", tgl: "2026-05-06", durasi: 90, token: "MinimalTauSejarah" },
+    { tingkat: "9", mapel: "IPS", link: "https://bit.ly/PSAJ_IPS_9_2026", tgl: "2026-05-06", durasi: 90, token: "MINIMALTAUSEJARAH" },
     { tingkat: "9", mapel: "Matematika", link: "https://docs.google.com/forms/d/e/1FAIpQLScUL0P-yN3jQQHbhmmPfn-s9zJeywKM4d-jCbVi2d851IGYlg/viewform?usp=header", tgl: "2026-05-04", durasi: 90, token: "SMPYPKKP2026" },
-    { tingkat: "9", mapel: "PJOK", link: "https://forms.gle/rcrBqkYLEbKqrmgE9", tgl: "2026-05-07", durasi: 60, token: "passwordnyaapa?" },
+    { tingkat: "9", mapel: "PJOK", link: "https://forms.gle/rcrBqkYLEbKqrmgE9", tgl: "2026-05-07", durasi: 60, token: "PASSWORDNYAAPA?" },
     { tingkat: "9", mapel: "SBDP", link: "https://bit.ly/ASAJSBDP2526", tgl: "2026-05-07", durasi: 60, token: "BACAYANGBENER!" },
-    { tingkat: "9", mapel: "Informatika", link: "https://bit.ly/PSAJ_Informatika_Agung26", tgl: "2026-05-08", durasi: 60, token: "SayaPastiLulus" },
-    { tingkat: "9", mapel: "Bahasa Sunda", link: "https://forms.gle/4NxzRsnbhrToniEq5", tgl: "2026-05-08", durasi: 60, token: "SundaTeuHese" }
+    { tingkat: "9", mapel: "Informatika", link: "https://bit.ly/PSAJ_Informatika_Agung26", tgl: "2026-05-08", durasi: 60, token: "SAYAPASTILULUS" },
+    { tingkat: "9", mapel: "Bahasa Sunda", link: "https://forms.gle/4NxzRsnbhrToniEq5", tgl: "2026-05-08", durasi: 60, token: "SUNDATEUHESE" }
 ];
 
 let isExamActive = false;
